@@ -28,13 +28,15 @@ services:
       - harness
     environment:
       - GITNESS_URL_BASE=http://harness.local.io
-      # - GITNESS_URL_UI=http://harness.local.io
-      # - GITNESS_URL_API=http://harness.local.io/api
-      # - GITNESS_URL_GIT=http://harness.local.io/git
-      # - GITNESS_CI_PARALLEL_WORKERS=2
-      # - GITNESS_DEBUG=false
-      # - GITNESS_TRACE=false
+      - GITNESS_URL_UI=http://harness.local.io
+      - GITNESS_URL_API=http://harness.local.io/api
+      - GITNESS_URL_GIT=http://harness.local.io/git
+      - GITNESS_CI_PARALLEL_WORKERS=2
+      - GITNESS_DEBUG=true
+      - GITNESS_TRACE=true
+      - GITNESS_USER_SIGNUP_ENABLED=false
       # - GITNESS_HTTP_PORT=3000
+      # - GITNESS_CI_CONTAINER_NETWORKS=networkA,networkB
       # - GITNESS_DATABASE_DRIVER=postgres
       # - GITNESS_DATABASE_DATASOURCE="host=1.2.3.4 port=5678 sslmode=disable dbname=harness user=$USER password=$PASSWORD"
     volumes:
