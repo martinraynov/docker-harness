@@ -7,7 +7,7 @@ help: ## Prints this help message
 ######################
 ### MAIN FUNCTIONS ###
 ######################
-SERVICE=SERVICE_NAME_TOCHANGE
+SERVICE=harness
 
 .PHONY: add_localhost
 add_localhost: ## Add local host into /etc/hosts file (need root permission)

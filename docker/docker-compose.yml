@@ -1,0 +1,42 @@
+networks:
+  default:
+    external: true
+    name: lb-common
+  harness:
+    external: false
+    name: harness
+
+services:
+  harness:
+    image: harness/harness:latest
+    container_name: harness
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.harness.entrypoints=web"
+      - "traefik.http.routers.harness.rule=Host(`harness.local.io`)"
+      - "traefik.http.routers.harness.service=svc_harness"
+      - "traefik.http.services.svc_harness.loadbalancer.server.port=3000"
+
+      # - "traefik.http.routers.harness_ssh.entrypoints=ssh"
+      # - "traefik.http.routers.harness_ssh.rule=Host(`harness.local.io`)"
+      # - "traefik.http.routers.harness_ssh.service=svc_harness_ssh"
+      # - "traefik.http.services.svc_harness_ssh.loadbalancer.server.port=22"
+    restart: always
+    networks:
+      - default
+      - harness
+    environment:
+      - GITNESS_URL_BASE=http://harness.local.io
+      # - GITNESS_URL_UI=http://harness.local.io
+      # - GITNESS_URL_API=http://harness.local.io/api
+      # - GITNESS_URL_GIT=http://harness.local.io/git
+      # - GITNESS_CI_PARALLEL_WORKERS=2
+      # - GITNESS_DEBUG=false
+      # - GITNESS_TRACE=false
+      # - GITNESS_HTTP_PORT=3000
+      # - GITNESS_DATABASE_DRIVER=postgres
+      # - GITNESS_DATABASE_DATASOURCE="host=1.2.3.4 port=5678 sslmode=disable dbname=harness user=$USER password=$PASSWORD"
+    volumes:
+      - ./data:/data:rw
+    

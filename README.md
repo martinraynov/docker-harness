@@ -1,5 +1,6 @@
-# mra-template
-Base template for Projects
+# Harness for docker
+
+This repo allows you to run an Harness instance configured befind a Traefik v2 Proxy service. 
 
 ## Requirements
 
@@ -10,7 +11,7 @@ Base template for Projects
 sudo make add_localhost
 ```
 
-(You can also add manually the line into the /etc/hosts file : `127.0.0.1 gafana.local.io`
+(You can also add manually the line into the /etc/hosts file : `127.0.0.1 harness.local.io`
 
 (To remove the line you can manually remove it from the /etc/host file or execute : `sudo make remove_localhost`)
 
